@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
+
+const bricolageGrotesque = Bricolage_Grotesque({
+  weight: ['300', '400', '500', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  fallback: ['Arial', 'sans-serif'],
+});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,8 +34,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${bricolageGrotesque.className} antialiased max-w-fit`}
       >
+        <div className="bg-[#4852EB] w-96 h-96 blur-[500px] absolute right-0 top-[500px] -z-20"></div>
+        <div className="bg-[#9550FB] w-96 h-96 blur-[500px] absolute left-[20%]  -z-20"></div>
+        <div className="bg-[#F54D93] w-96 h-96 blur-[500px] absolute -left-10 top-[500px] -z-20"></div>
+        {/* <div className="bg-[#9550FB] w-48 h-48 blur-[120px] absolute left-10 top-3 -z-20"></div> */}
+        {/* <div className="bg-[#F54D93] w-48 h-48 blur-[120px] absolute top-10 -z-20"></div> */}
         {children}
       </body>
     </html>
